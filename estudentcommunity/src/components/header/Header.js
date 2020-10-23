@@ -17,6 +17,7 @@ import {
 } from "reactstrap";
 import { Link } from "react-router-dom";
 import { FaSistrix } from "react-icons/fa";
+import logo from "../../assets/logo.jpeg";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -24,28 +25,28 @@ const Header = () => {
   const toggle = () => setIsOpen(!isOpen);
   return (
     <Navbar color="dark" dark expand="md">
-      <Link to="/" className="mr-2">
-        LOGO
+      <Link to="/" className="mr-4">
+        <img src={logo} className="image-fluid" style={{ width: "50px" }} />
       </Link>
       <NavbarToggler onClick={toggle} />
       <Collapse isOpen={isOpen} navbar>
         <Nav className="mr-auto" navbar>
-          <NavbarText className="mr-2">
+          <NavbarText className="mr-4">
             <Link to="/about">About</Link>
           </NavbarText>
-          <NavbarText className="mr-2">
+          <NavbarText className="mr-4">
             <Link to="/ambassador">Ambassador</Link>
           </NavbarText>
-          <NavbarText className="mr-2">
+          <NavbarText className="mr-4">
             <Link to="/events">Events</Link>
           </NavbarText>
-          <NavbarText className="mr-2">
+          <NavbarText className="mr-4">
             <Link to="/blog">Blog</Link>
           </NavbarText>
-          <NavbarText className="mr-2">
+          <NavbarText className="mr-4">
             <Link to="/gallery">Gallery</Link>
           </NavbarText>
-          <NavbarText className="mr-2">
+          <NavbarText className="mr-4">
             <Link to="/contact">Contact</Link>
           </NavbarText>
           {/* <UncontrolledDropdown nav inNavbar>
