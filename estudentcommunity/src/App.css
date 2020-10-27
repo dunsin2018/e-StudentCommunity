@@ -7,3 +7,8 @@
 body {
   overflow-x: hidden;
 }
+
+.center-div {
+  width: 50%;
+  margin: auto;
+}
