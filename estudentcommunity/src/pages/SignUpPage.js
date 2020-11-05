@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Container,
   Col,
@@ -13,8 +13,56 @@ import {
   CardHeader,
   CardFooter,
 } from "reactstrap";
+import { signUpNewUser } from "../api/Service";
+import { useAuthDispatch, useAuthState } from "../context/auth";
 
 const SignUpPage = () => {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    department: "",
+    email: "",
+    program: "",
+    country: "",
+    gender: "",
+    confirmPassword: "",
+    password: "",
+  });
+
+  const dispatch = useAuthDispatch();
+  const state = useAuthState();
+
+  console.log(state);
+
+  const {
+    firstName,
+    lastName,
+    department,
+    email,
+    program,
+    country,
+    gender,
+    password,
+    confirmPassword,
+  } = formData;
+
+  const handleChange = (event) => {
+    const { value, name } = event.target;
+
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSignUpUser = () => {
+    if (password !== confirmPassword) {
+      alert("Password and confirm password must match");
+      return;
+    }
+
+    signUpNewUser(formData, dispatch);
+  };
+
+  console.log(formData);
+
   return (
     <Container className="mt-5 center-div">
       <Card>
@@ -32,6 +80,8 @@ const SignUpPage = () => {
                     name="firstName"
                     id="firstName"
                     placeholder="First name"
+                    onChange={handleChange}
+                    value={firstName}
                   />
                 </FormGroup>
               </Col>
@@ -43,6 +93,8 @@ const SignUpPage = () => {
                     name="lastName"
                     id="lastName"
                     placeholder="Last name"
+                    onChange={handleChange}
+                    value={lastName}
                   />
                 </FormGroup>
               </Col>
@@ -51,22 +103,32 @@ const SignUpPage = () => {
               <Col md={6}>
                 <FormGroup>
                   <Label for="department">Department</Label>
-                  <Input type="select" name="department" id="department">
+                  <Input
+                    type="select"
+                    name="department"
+                    id="department"
+                    onChange={handleChange}
+                    value={department}
+                  >
                     <option>select category</option>
-                    <option>Ambassador</option>
-                    <option>Reps</option>
-                    <option>Student</option>
+                    <option>Software Development and Entrepreneurship</option>
+                    <option>Game Design and Development</option>
+                    <option>Creativity and Business Innovation</option>
+                    <option>Start-up Entrepreneurship</option>
+                    <option>International Business Administration</option>
                   </Input>
                 </FormGroup>
               </Col>
               <Col md={6}>
                 <FormGroup>
-                  <Label for="emailSignUp">Email</Label>
+                  <Label for="email">Email</Label>
                   <Input
                     type="email"
-                    name="emailSignUp"
-                    id="emailSignUp"
+                    name="email"
+                    id="email"
                     placeholder="email"
+                    onChange={handleChange}
+                    value={email}
                   />
                 </FormGroup>
               </Col>
@@ -75,14 +137,26 @@ const SignUpPage = () => {
               <Col md="6">
                 <FormGroup tag="fieldset" className="d-flex ">
                   <legend>Gender</legend>
-                  <FormGroup check className="mr-2">
+                  <FormGroup check className="mr-2" name="gender">
                     <Label check>
-                      <Input type="radio" name="radio1" /> Male
+                      <Input
+                        type="radio"
+                        name="gender"
+                        value="Male"
+                        onChange={handleChange}
+                      />{" "}
+                      Male
                     </Label>
                   </FormGroup>
                   <FormGroup check>
                     <Label check>
-                      <Input type="radio" name="radio1" /> Female
+                      <Input
+                        type="radio"
+                        value="Female"
+                        name="gender"
+                        onChange={handleChange}
+                      />{" "}
+                      Female
                     </Label>
                   </FormGroup>
                 </FormGroup>
@@ -97,6 +171,8 @@ const SignUpPage = () => {
                     name="program"
                     id="program"
                     placeholder="Program"
+                    onChange={handleChange}
+                    value={program}
                   >
                     <option>select program</option>
                     <option>Bachelors</option>
@@ -113,6 +189,36 @@ const SignUpPage = () => {
                     name="country"
                     id="country"
                     placeholder="country"
+                    onChange={handleChange}
+                    value={country}
+                  />
+                </FormGroup>
+              </Col>
+            </Row>
+            <Row>
+              <Col md="6">
+                <FormGroup>
+                  <Label for="program">Password</Label>
+                  <Input
+                    type="password"
+                    name="password"
+                    id="password"
+                    placeholder="Password"
+                    onChange={handleChange}
+                    value={password}
+                  />
+                </FormGroup>
+              </Col>
+              <Col md="6">
+                <FormGroup>
+                  <Label for="confirmPassword">Confirm password</Label>
+                  <Input
+                    type="password"
+                    name="confirmPassword"
+                    id="confirmPassword"
+                    placeholder="Confirm Password"
+                    onChange={handleChange}
+                    value={confirmPassword}
                   />
                 </FormGroup>
               </Col>
@@ -121,7 +227,22 @@ const SignUpPage = () => {
         </CardBody>
         <CardFooter>
           <div className="text-center">
-            <Button size="lg" color="primary">
+            <Button
+              size="lg"
+              color="primary"
+              disabled={
+                !firstName ||
+                !lastName ||
+                !department ||
+                !email ||
+                !program ||
+                !country ||
+                !gender ||
+                !password ||
+                !confirmPassword
+              }
+              onClick={handleSignUpUser}
+            >
               Sign Up
             </Button>
           </div>

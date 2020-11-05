@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Container } from "reactstrap";
 import "./App.css";
@@ -13,8 +13,15 @@ import HomePage from "./pages/HomePage";
 import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
 import Footer from "./components/footer/Footer";
+import { checkUserSession } from "./api/Service";
+import { useAuthDispatch } from "./context/auth";
 
 function App() {
+  const dispatch = useAuthDispatch();
+
+  useEffect(() => {
+    checkUserSession(dispatch);
+  }, []);
   return (
     <div className="App">
       <Router>
