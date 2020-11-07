@@ -36,10 +36,10 @@ const ImageSlider = ({ images }) => {
         key={item.src}
       >
         <img src={item.src} alt={item.altText} className="d-block w-100" />
-        {/* <CarouselCaption
-          captionText={item.caption}
-          captionHeader={item.caption}
-        /> */}
+        <CarouselCaption
+          captionText="We are EUAS Student Body"
+          captionHeader="WELCOME"
+        />
       </CarouselItem>
     );
   });

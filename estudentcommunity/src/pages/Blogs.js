@@ -1,7 +1,12 @@
 import React from "react";
+import ImageBackground from "../components/elements/ImageBackground";
 
 const Blogs = () => {
-  return <div>Blogs</div>;
+  return (
+    <section>
+      <ImageBackground />
+    </section>
+  );
 };
 
 export default Blogs;

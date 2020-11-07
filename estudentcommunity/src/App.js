@@ -37,8 +37,8 @@ function App() {
           <Route exact path="/sign-in" component={SignInPage} />
           <Route exact path="/sign-up" component={SignUpPage} />
         </Switch>
-        <Footer />
       </Router>
+      <Footer />
     </div>
   );
 }

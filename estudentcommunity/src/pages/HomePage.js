@@ -4,17 +4,22 @@ import { images } from "../assets/data";
 import ImageSlider from "../components/elements/ImageSlider";
 import logo from "../assets/logo.jpeg";
 import SignInPage from "./SignInPage";
+import StudentAmbassador from "../components/StudentAmbassador";
+import RecentEvents from "../components/RecentEvents";
 
 const HomePage = () => {
   return (
-    <>
-      <Row style={{ marginBottom: "10%" }}>
+    <section style={{ marginBottom: "10%" }}>
+      <Row className="mb-5">
         <Col md="12">
           <ImageSlider images={images} />
-          <SignInPage />
         </Col>
       </Row>
-    </>
+      <Container>
+        <StudentAmbassador isHompage={true} />
+        <RecentEvents isHompage={true} />
+      </Container>
+    </section>
   );
 };
 
