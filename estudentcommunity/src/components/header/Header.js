@@ -18,9 +18,14 @@ import {
 import { Link } from "react-router-dom";
 import { FaSistrix } from "react-icons/fa";
 import logo from "../../assets/logo.jpeg";
+import { useAuthState } from "../../context/auth";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const { currentUser } = useAuthState();
+
+  console.log(currentUser);
 
   const toggle = () => setIsOpen(!isOpen);
   return (
@@ -49,35 +54,42 @@ const Header = () => {
           <NavbarText className="mr-4">
             <Link to="/contact">Contact</Link>
           </NavbarText>
-          {/* <UncontrolledDropdown nav inNavbar>
-            <DropdownToggle nav caret>
-              Options
-            </DropdownToggle>
-            <DropdownMenu right>
-              <DropdownItem>Option 1</DropdownItem>
-              <DropdownItem>Option 2</DropdownItem>
-              <DropdownItem divider />
-              <DropdownItem>Reset</DropdownItem>
-            </DropdownMenu>
-          </UncontrolledDropdown> */}
         </Nav>
         <NavbarText className="mr-2" style={{ cursor: "pointer" }}>
           <Input placeholder="search" />
         </NavbarText>
-        <NavbarText className="mr-2">
-          <Link to="/sign-in">
-            <Button size="sm" color="primary" className="text-uppercase">
-              Sign in
-            </Button>
-          </Link>
-        </NavbarText>
-        <NavbarText>
-          <Link to="/sign-up">
-            <Button size="sm" color="warning" className="text-uppercase">
-              Sign up
-            </Button>
-          </Link>
-        </NavbarText>
+        {currentUser ? (
+          <UncontrolledDropdown nav inNavbar>
+            <DropdownToggle nav caret>
+              {currentUser.displayName}
+            </DropdownToggle>
+            <DropdownMenu right>
+              <DropdownItem>
+                <Link to="/dashboard">Dashboard</Link>
+              </DropdownItem>
+              {/* <DropdownItem>Option 2</DropdownItem> */}
+              <DropdownItem divider />
+              <DropdownItem className="text-danger">Logout</DropdownItem>
+            </DropdownMenu>
+          </UncontrolledDropdown>
+        ) : (
+          <>
+            <NavbarText className="mr-2">
+              <Link to="/sign-in">
+                <Button size="sm" color="primary" className="text-uppercase">
+                  Sign in
+                </Button>
+              </Link>
+            </NavbarText>
+            <NavbarText>
+              <Link to="/sign-up">
+                <Button size="sm" color="warning" className="text-uppercase">
+                  Sign up
+                </Button>
+              </Link>
+            </NavbarText>
+          </>
+        )}
       </Collapse>
     </Navbar>
   );

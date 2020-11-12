@@ -6,6 +6,9 @@ import logo from "../assets/logo.jpeg";
 import SignInPage from "./SignInPage";
 import StudentAmbassador from "../components/StudentAmbassador";
 import RecentEvents from "../components/RecentEvents";
+import { ambassadors } from "../assets/studentAmbData";
+
+const data = ambassadors.slice(0, 3);
 
 const HomePage = () => {
   return (
@@ -16,7 +19,11 @@ const HomePage = () => {
         </Col>
       </Row>
       <Container>
-        <StudentAmbassador isHompage={true} />
+        <StudentAmbassador
+          isHompage={true}
+          ambassadors={data}
+          title="STUDENT AMBASSADORS"
+        />
         <RecentEvents isHompage={true} />
       </Container>
     </section>

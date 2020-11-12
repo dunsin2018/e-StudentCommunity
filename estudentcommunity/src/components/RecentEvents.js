@@ -9,7 +9,11 @@ const RecentEvents = ({ isHompage }) => {
       <h3 className="text-center mb-4">RECENT EVENTS</h3>
       <Row className="mb-4">
         <Col md="4">
-          <img width="100%" src="https://via.placeholder.com/150" alt="" />
+          <img
+            width="100%"
+            src="/projectImages/pexels-visual-tag-mx-5612827.jpg"
+            alt=""
+          />
         </Col>
         <Col>
           <h4>This is news title</h4>
@@ -27,15 +31,21 @@ const RecentEvents = ({ isHompage }) => {
             {moment(Date.now()).format("MMMM Do YYYY, h:mm:ss a")}
           </span>
           <div className="mt-3">
-            <Button size="sm" color="info">
-              Read more
-            </Button>
+            <Link to="/events/1">
+              <Button size="sm" color="info">
+                Read more
+              </Button>
+            </Link>
           </div>
         </Col>
       </Row>
       <Row className="mb-4">
         <Col md="4">
-          <img width="100%" src="https://via.placeholder.com/150" alt="" />
+          <img
+            width="100%"
+            src="/projectImages/sam-balye-w1FwDvIreZU-unsplash.jpg"
+            alt=""
+          />
         </Col>
         <Col>
           <h4>This is news title</h4>
@@ -53,15 +63,21 @@ const RecentEvents = ({ isHompage }) => {
             {moment(Date.now()).format("MMMM Do YYYY, h:mm:ss a")}
           </span>
           <div className="mt-3">
-            <Button size="sm" color="info">
-              Read more
-            </Button>
+            <Link to="/events/2">
+              <Button size="sm" color="info">
+                Read more
+              </Button>
+            </Link>
           </div>
         </Col>
       </Row>
       <Row className="mb-4">
         <Col md="4">
-          <img width="100%" src="https://via.placeholder.com/150" alt="" />
+          <img
+            width="100%"
+            src="/projectImages/windows-p74ndnYWRY4-unsplash.jpg"
+            alt=""
+          />
         </Col>
         <Col>
           <h4>This is news title</h4>
@@ -79,9 +95,11 @@ const RecentEvents = ({ isHompage }) => {
             {moment(Date.now()).format("MMMM Do YYYY, h:mm:ss a")}
           </span>
           <div className="mt-3">
-            <Button size="sm" color="info">
-              Read more
-            </Button>
+            <Link to="/events/3">
+              <Button size="sm" color="info">
+                Read more
+              </Button>
+            </Link>
           </div>
         </Col>
       </Row>
