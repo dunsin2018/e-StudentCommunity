@@ -161,6 +161,19 @@ const SignUpPage = () => {
                   </FormGroup>
                 </FormGroup>
               </Col>
+              <Col md="6">
+                <FormGroup>
+                  <Label for="year">Year</Label>
+                  <Input
+                    type="text"
+                    name="year"
+                    id="year"
+                    placeholder="year"
+                    // onChange={handleChange}
+                    // value={country}
+                  />
+                </FormGroup>
+              </Col>
             </Row>
             <Row>
               <Col md="6">

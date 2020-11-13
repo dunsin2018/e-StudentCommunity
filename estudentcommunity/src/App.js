@@ -74,7 +74,7 @@ function App({ history }) {
             exact
             path="/dashboard"
             render={(props) =>
-              currentUser ? <Dashboard {...props} /> : <Dashboard {...props} />
+              currentUser ? <Dashboard {...props} /> : <Redirect to="/" />
             }
           />
         </Switch>

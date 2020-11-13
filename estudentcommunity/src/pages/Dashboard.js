@@ -14,15 +14,16 @@ import {
   Input,
   CardFooter,
 } from "reactstrap";
+import Messenger from "../components/messenger/Messenger";
 import { useAuthState } from "../context/auth";
 
 const Dashboard = () => {
   const { currentUser } = useAuthState();
 
   return (
-    <Container className="mt-5" style={{ marginBottom: "10%" }}>
+    <div className="mt-5 mr-4 ml-4" style={{ marginBottom: "10%" }}>
       <Row>
-        <Col md="8">
+        <Col md="7">
           <Card>
             <CardHeader>
               <div
@@ -124,10 +125,12 @@ const Dashboard = () => {
             </CardBody>
           </Card>
         </Col>
-        <Col md="4">
+        <Col md="5">
           <Card>
             <CardHeader>Selected Community</CardHeader>
-            <CardBody></CardBody>
+            <CardBody>
+              <Messenger />
+            </CardBody>
             <CardFooter>
               <div className="d-flex align-items-center">
                 <Input placeholder="Your message" />
@@ -139,7 +142,7 @@ const Dashboard = () => {
           </Card>
         </Col>
       </Row>
-    </Container>
+    </div>
   );
 };
 
