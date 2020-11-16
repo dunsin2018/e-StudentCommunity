@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   Row,
   Col,
@@ -16,9 +16,43 @@ import {
 } from "reactstrap";
 import Messenger from "../components/messenger/Messenger";
 import { useAuthState } from "../context/auth";
+import { firestore } from "../api/firebase.config";
+import Communities from "../components/messenger/Communities";
+import CreateNewCommunity from "../components/messenger/CreateNewCommunity";
 
 const Dashboard = () => {
+  const [communites, setCommunity] = useState([]);
+  const [communityName, setName] = useState("");
+  const [isOpen, setIsopen] = useState(false);
   const { currentUser } = useAuthState();
+
+  useEffect(() => {
+    firestore
+      .collection("communities")
+      .onSnapshot((snapshot) =>
+        setCommunity(
+          snapshot.docs.map((doc) => ({ id: doc.id, data: doc.data() }))
+        )
+      );
+  }, []);
+
+  const closeModal = () => {
+    setIsopen(false);
+  };
+
+  const handleChange = (e) => {
+    setName(e.target.value);
+  };
+
+  const addCommunity = () => {
+    if (communityName) {
+      firestore.collection("communities").add({
+        name: communityName,
+      });
+      closeModal();
+      setName("");
+    }
+  };
 
   return (
     <div className="mt-5 mr-4 ml-4" style={{ marginBottom: "10%" }}>
@@ -36,7 +70,12 @@ const Dashboard = () => {
                 <Button size="sm" color="info">
                   Add Member
                 </Button>
-                <Button className="ml-3" size="sm" color="warning">
+                <Button
+                  className="ml-3"
+                  size="sm"
+                  color="warning"
+                  onClick={() => setIsopen(true)}
+                >
                   Create Community
                 </Button>
               </div>
@@ -113,12 +152,13 @@ const Dashboard = () => {
                     CHAT COMMUNITIES
                   </h4>
                   <div className="mt-4">
-                    <h6 className="mb-3 border communities"># Politics</h6>
-                    <h6 className="mb-3 border communities"># Politics</h6>
-                    <h6 className="mb-3 border communities"># Politics</h6>
-                    <h6 className="mb-3 border communities"># Politics</h6>
-                    <h6 className="mb-3 border communities"># Politics</h6>
-                    <h6 className="mb-3 border communities"># Politics</h6>
+                    {communites.map((community) => (
+                      <Communities
+                        name={community.data.name}
+                        id={community.id}
+                        key={community.id}
+                      />
+                    ))}
                   </div>
                 </Col>
               </Row>
@@ -142,6 +182,13 @@ const Dashboard = () => {
           </Card>
         </Col>
       </Row>
+      <CreateNewCommunity
+        isOpen={isOpen}
+        toggle={closeModal}
+        communityName={communityName}
+        handleChange={handleChange}
+        addCommunity={addCommunity}
+      />
     </div>
   );
 };
