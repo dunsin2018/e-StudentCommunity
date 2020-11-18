@@ -1,68 +1,87 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# e-StudentUnionCommunity
 
-## Available Scripts
+[PROJECT PROTOTYPE](https://github.com/dunsin2018/e-StudentUnionCommunity/issues/1)
 
-In the project directory, you can run:
+### View on web
 
-### `npm start`
+https://e-studentunioncommunity.web.app
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# Project Topic:
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+A web base E-Student Union Body platform that can be adopted by any institution.
 
-### `npm test`
+# Issue To Resolve
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Back in the days where student unions are very active in universities, unlike our own university EUAS. Am creating this platform for my fellow students to be able to proffer solutions to matters arising among students of the university, channeling all issues to the appropriate management. This platform will enable students of our university to join various channels related or unrelated to their course of studies. Students will be able to leverage on this opportunity by accessing some features such as e-voting, e-manifesto and many more, so as to enable them to vote for ambassadors of their choice, that will manage the affairs of the students of the universities and channel it to the appropriate management.
 
-### `npm run build`
+# Target Group
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+University Students.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+# Purpose
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The purpose of this web application platform is to provide university students a platform where their opinion, voices can be channeled quickly to the appropriate authorities of the institution.
 
-### `npm run eject`
+# Technology Stack
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Front-End Stacks
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+● Vuejs <br>
+● Vue router <br>
+● Axios <br>
+● Vuex<br>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Back-End Stacks
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+● Firebase <br>
 
-## Learn More
+## Database
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+● Firebase
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# Project Plan
 
-### Code Splitting
+## Back-End Plan
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+● Project setup and installing of project dependencies <br>
+● Creating of database schemas <br>
 
-### Analyzing the Bundle Size
+## Front-End Plan
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+● Project setup and installing of project dependencies <br>
+● Connecting application to firebase server <br>
+● Creating different components for the application. <br>
+● Adding different pages and connecting it to the components. <br>
+● General testing of application <br>
+● Deployment to Firebase <br>
 
-### Making a Progressive Web App
+# USERS STORIES
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+● As a user i want to be able to send a direct message to make enquiry. <br>
+● As a user i want to be able to create a dashboard with a valid university email address <br>
+● As a user i want to be able to login with a valid email address from the university. <br>
+● As a user i want to be able to view the profiles of the school ambassadors. <br>
+● As a user i want to be able to view more events. <br>
+● As a user i want to be able to view the gallery pictures on another page. <br>
+● As a user i want to be able to view recent post or popular post from the calender.<br>
+● As a user i want to be able to select the categories of student i belong to during signing up.<br>
+● As a user i want to be able to add a profile picture on my dashboard.<br>
+● As a user i want to be able to update my personal data on the dashboard.<br>
+● As a user i want to be able to join chat communities on my dashboard.<br>
+● As a specific user i want to be able to add members to chat communities and also delete members from the chat communities. <br>
 
-### Advanced Configuration
+## Running application
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+In the project directory, you can run the following commands
 
-### Deployment
+### `npm install``
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+Installs all the project dependencies
 
-### `npm run build` fails to minify
+### `npm start``
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Starts application in [http://localhost:3000]
+
+### `npm run build``
+
+Builds application for production

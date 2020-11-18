@@ -78,8 +78,8 @@ function App({ history }) {
             }
           />
         </Switch>
+        <Footer />
       </Router>
-      <Footer />
     </div>
   );
 }

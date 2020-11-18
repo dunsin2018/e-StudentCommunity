@@ -19,22 +19,71 @@ import { useAuthState } from "../context/auth";
 import { firestore } from "../api/firebase.config";
 import Communities from "../components/messenger/Communities";
 import CreateNewCommunity from "../components/messenger/CreateNewCommunity";
+import firebase from "firebase";
 
 const Dashboard = () => {
   const [communites, setCommunity] = useState([]);
   const [communityName, setName] = useState("");
   const [isOpen, setIsopen] = useState(false);
+  const [roomId, setRoomId] = useState("");
+  const [roomName, setRoomName] = useState("");
+  const [messages, setMessages] = useState([]);
+  const [chatMessage, setChatMessage] = useState("");
+
   const { currentUser } = useAuthState();
 
   useEffect(() => {
-    firestore
+    const unsubscribe = firestore
       .collection("communities")
       .onSnapshot((snapshot) =>
         setCommunity(
           snapshot.docs.map((doc) => ({ id: doc.id, data: doc.data() }))
         )
       );
+
+    return () => {
+      unsubscribe();
+    };
   }, []);
+
+  useEffect(() => {
+    if (roomId) {
+      firestore
+        .collection("communities")
+        .doc(roomId)
+        .onSnapshot((snapshot) => setRoomName(snapshot.data().name));
+
+      firestore
+        .collection("communities")
+        .doc(roomId)
+        .collection("messages")
+        .orderBy("timestamp", "asc")
+        .onSnapshot((snapshot) =>
+          setMessages(snapshot.docs.map((doc) => doc.data()))
+        );
+    }
+  }, [roomId]);
+
+  const handleMessageInput = (e) => {
+    setChatMessage(e.target.value);
+  };
+
+  const sendMessage = (e) => {
+    e.preventDefault();
+    if (chatMessage) {
+      firestore
+        .collection("communities")
+        .doc(roomId)
+        .collection("messages")
+        .add({
+          message: chatMessage,
+          sender: currentUser.displayName,
+          timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+        });
+
+      setChatMessage("");
+    }
+  };
 
   const closeModal = () => {
     setIsopen(false);
@@ -133,6 +182,7 @@ const Dashboard = () => {
                         name="year"
                         id="year"
                         placeholder="year"
+                        value={currentUser && currentUser.year}
                       />
                     </FormGroup>
                     <FormGroup>
@@ -157,6 +207,8 @@ const Dashboard = () => {
                         name={community.data.name}
                         id={community.id}
                         key={community.id}
+                        setRoomId={setRoomId}
+                        roomId={roomId}
                       />
                     ))}
                   </div>
@@ -165,22 +217,36 @@ const Dashboard = () => {
             </CardBody>
           </Card>
         </Col>
-        <Col md="5">
-          <Card>
-            <CardHeader>Selected Community</CardHeader>
-            <CardBody>
-              <Messenger />
-            </CardBody>
-            <CardFooter>
-              <div className="d-flex align-items-center">
-                <Input placeholder="Your message" />
-                <Button size="sm" color="primary" className="ml-3">
-                  Send
-                </Button>
-              </div>
-            </CardFooter>
-          </Card>
-        </Col>
+        {roomId && roomName ? (
+          <Col md="5">
+            <Card>
+              <CardHeader>{roomName}</CardHeader>
+              <CardBody>
+                <Messenger messages={messages} currentUser={currentUser} />
+              </CardBody>
+              <CardFooter>
+                <div className="d-flex align-items-center">
+                  <form style={{ width: "100%" }} onSubmit={sendMessage}>
+                    <Input
+                      placeholder="Your message"
+                      onChange={handleMessageInput}
+                      value={chatMessage}
+                    />
+                  </form>
+                  <Button
+                    size="sm"
+                    color="primary"
+                    className="ml-3"
+                    type="submit"
+                    onClick={sendMessage}
+                  >
+                    Send
+                  </Button>
+                </div>
+              </CardFooter>
+            </Card>
+          </Col>
+        ) : null}
       </Row>
       <CreateNewCommunity
         isOpen={isOpen}

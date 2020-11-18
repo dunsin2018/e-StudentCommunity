@@ -33,6 +33,7 @@ export const signUpNewUser = async (userData, dispatch) => {
     country,
     gender,
     password,
+    year,
   } = userData;
 
   try {
@@ -47,6 +48,7 @@ export const signUpNewUser = async (userData, dispatch) => {
         program,
         country,
         gender,
+        year,
       },
       dispatch
     );
@@ -59,7 +61,16 @@ export const checkUserSession = async (dispatch) => {
   try {
     const userAuth = await getCurrentUser();
     if (!userAuth) return;
-    getSnapShotFromUserAuth(userAuth, null, dispatch);
+    await getSnapShotFromUserAuth(userAuth, null, dispatch);
+  } catch (error) {
+    dispatch({ type: authActionTypes.LOGIN_FAILD, payload: error });
+  }
+};
+
+export const signInWithEmail = async ({ email, password }, dispatch) => {
+  try {
+    const { user } = await auth.signInWithEmailAndPassword(email, password);
+    await getSnapShotFromUserAuth(user, null, dispatch);
   } catch (error) {
     dispatch({ type: authActionTypes.LOGIN_FAILD, payload: error });
   }

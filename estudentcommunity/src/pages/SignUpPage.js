@@ -27,12 +27,11 @@ const SignUpPage = () => {
     gender: "",
     confirmPassword: "",
     password: "",
+    year: "",
   });
 
   const dispatch = useAuthDispatch();
-  const state = useAuthState();
-
-  console.log(state);
+  const { error } = useAuthState();
 
   const {
     firstName,
@@ -44,6 +43,7 @@ const SignUpPage = () => {
     gender,
     password,
     confirmPassword,
+    year,
   } = formData;
 
   const handleChange = (event) => {
@@ -61,10 +61,8 @@ const SignUpPage = () => {
     signUpNewUser(formData, dispatch);
   };
 
-  console.log(formData);
-
   return (
-    <Container className="mt-5 center-div">
+    <Container className="mt-5 center-div" style={{ marginBottom: "10%" }}>
       <Card>
         <CardHeader>
           <h3 className="text-center text-uppercase">Sign up</h3>
@@ -169,8 +167,8 @@ const SignUpPage = () => {
                     name="year"
                     id="year"
                     placeholder="year"
-                    // onChange={handleChange}
-                    // value={country}
+                    onChange={handleChange}
+                    value={year}
                   />
                 </FormGroup>
               </Col>
@@ -236,6 +234,7 @@ const SignUpPage = () => {
                 </FormGroup>
               </Col>
             </Row>
+            {error ? <span>{error.message}</span> : null}
           </Form>
         </CardBody>
         <CardFooter>
@@ -252,7 +251,8 @@ const SignUpPage = () => {
                 !country ||
                 !gender ||
                 !password ||
-                !confirmPassword
+                !confirmPassword ||
+                !year
               }
               onClick={handleSignUpUser}
             >

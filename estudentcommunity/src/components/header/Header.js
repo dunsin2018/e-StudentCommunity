@@ -18,14 +18,28 @@ import {
 import { Link } from "react-router-dom";
 import { FaSistrix } from "react-icons/fa";
 import logo from "../../assets/logo.jpeg";
-import { useAuthState } from "../../context/auth";
+import { useAuthState, useAuthDispatch } from "../../context/auth";
+import authActionTypes from "../../context/authActionTypes";
+import { auth } from "../../api/firebase.config";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const { currentUser } = useAuthState();
+  const dispatch = useAuthDispatch();
 
   console.log(currentUser);
+
+  const logoutUser = () => {
+    auth
+      .signOut()
+      .then(() => {
+        dispatch({ type: authActionTypes.SIGN_OUT });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const toggle = () => setIsOpen(!isOpen);
   return (
@@ -69,7 +83,9 @@ const Header = () => {
               </DropdownItem>
               {/* <DropdownItem>Option 2</DropdownItem> */}
               <DropdownItem divider />
-              <DropdownItem className="text-danger">Logout</DropdownItem>
+              <DropdownItem className="text-danger" onClick={logoutUser}>
+                <Link to="/">Logout</Link>
+              </DropdownItem>
             </DropdownMenu>
           </UncontrolledDropdown>
         ) : (

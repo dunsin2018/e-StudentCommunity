@@ -25,6 +25,13 @@ const authReducer = (state = initialState, { type, payload }) => {
         error: payload,
       };
 
+    case authActionTypes.SIGN_OUT:
+      return {
+        ...state,
+        currentUser: null,
+        error: null,
+      };
+
     default:
       return state;
   }
