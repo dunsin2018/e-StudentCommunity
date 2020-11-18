@@ -74,14 +74,14 @@ The purpose of this web application platform is to provide university students a
 
 In the project directory, you can run the following commands
 
-### `npm install``
+### `npm install`
 
 Installs all the project dependencies
 
-### `npm start``
+### `npm start`
 
 Starts application in [http://localhost:3000]
 
-### `npm run build``
+### `npm run build`
 
 Builds application for production
