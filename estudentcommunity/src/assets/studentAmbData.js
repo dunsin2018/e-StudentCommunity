@@ -10,16 +10,19 @@ export const ambassadors = [
     programme: "",
     country: "",
     ques1: {
-      title: "",
-      answer: "",
+      title: "Why did you choose to study this programme?",
+      answer:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus optio commodi laudantium praesentium sed illum rem minima perferendis est qui quisquam voluptatem, nemo inventore consectetur quaerat nesciunt animi, adipisci corrupti Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus optio commodi laudantium praesentium sed illum rem minima perferendis est qui quisquam voluptatem, nemo inventore consectetur quaerat nesciunt animi, adipisci corruptiLorem ipsum dolor sit amet consectetur adipisicing elit. Delectus optio commodi laudantium praesentium sed illum rem minima perferendis est qui quisquam voluptatem, nemo inventore consectetur quaerat nesciunt animi, adipisci corrupti..",
     },
     ques2: {
-      title: "",
-      answer: "",
+      title: "Why Estonia?",
+      answer:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus optio commodi laudantium praesentium sed illum rem minima perferendis est qui quisquam voluptatem, nemo inventore consectetur quaerat nesciunt animi, adipisci corrupti.Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus optio commodi laudantium praesentium sed illum rem minima perferendis est qui quisquam voluptatem, nemo inventore consectetur quaerat nesciunt animi, adipisci corrupti.",
     },
     ques3: {
-      title: "",
-      answer: "",
+      title: "Have you ever had any leadership skills?",
+      answer:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus optio commodi laudantium praesentium sed illum rem minima perferendis est qui quisquam voluptatem, nemo inventore consectetur quaerat nesciunt animi, adipisci corrupti.Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus optio commodi laudantium praesentium sed illum rem minima perferendis est qui quisquam voluptatem, nemo inventore consectetur quaerat nesciunt animi, adipisci corrupti.",
     },
   },
   {
