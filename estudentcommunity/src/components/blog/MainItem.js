@@ -24,7 +24,7 @@ const MainItem = () => {
             <CardImg
               top
               width="100%"
-              src="https://via.placeholder.com/150"
+              src="/projectImages/pexels-andrea-piacquadio-787961.jpg"
               alt="Card image cap"
             />
 
@@ -57,7 +57,7 @@ const MainItem = () => {
             <CardImg
               top
               width="100%"
-              src="https://via.placeholder.com/150"
+              src="/ProjectImages/pexels-josh-sorenson-976866.jpg"
               alt="Card image cap"
             />
             <CardBody>

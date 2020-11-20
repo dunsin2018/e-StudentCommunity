@@ -16,7 +16,8 @@ export default class Footer extends Component {
             </Link>
           </div>
           <div>
-            &copy; {new Date().getFullYear()} E-Community, all rights reserved
+            &copy; {new Date().getFullYear()} E-StudentUnionCommunity, all
+            rights reserved
           </div>
         </Container>
       </div>
