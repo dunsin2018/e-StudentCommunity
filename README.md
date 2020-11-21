@@ -72,7 +72,7 @@ The purpose of this web application platform is to provide university students a
 
 ## Running application
 
-In the project directory, you can run the following commands
+In the project directory, you have to change directory to "estudentcommmunity" and run the following commands
 
 ### `npm install`
 
