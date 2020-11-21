@@ -37,7 +37,7 @@ const ImageSlider = ({ images }) => {
       >
         <img src={item.src} alt={item.altText} className="d-block w-100" />
         <CarouselCaption
-          captionText="We are EUAS Student Body"
+          captionText="The EUAS E-StudentUnionCommunity, also known as E-StudentUnionCommunity has shaped a lot of industry captains, nation builders and power brokers in and outside the shores of Estonia. The Society isn’t just about academic prosperity alone, it creates an environment for cultural exchange, social integration, capacity building, skill development, leadership training, networking and sporting activities."
           captionHeader="WELCOME"
         />
       </CarouselItem>

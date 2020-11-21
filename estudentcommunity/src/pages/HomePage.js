@@ -1,6 +1,6 @@
 import React from "react";
 import { Row, Col, Container } from "reactstrap";
-import { images } from "../assets/data";
+import { events, images } from "../assets/data";
 import ImageSlider from "../components/elements/ImageSlider";
 import logo from "../assets/logo.jpeg";
 import SignInPage from "./SignInPage";
@@ -9,6 +9,7 @@ import RecentEvents from "../components/RecentEvents";
 import { ambassadors } from "../assets/studentAmbData";
 
 const data = ambassadors.slice(0, 3);
+const eventsData = events.slice(0, 2);
 
 const HomePage = () => {
   return (
@@ -24,7 +25,11 @@ const HomePage = () => {
           ambassadors={data}
           title="STUDENT AMBASSADORS"
         />
-        <RecentEvents isHompage={true} />
+        <RecentEvents
+          isHompage={true}
+          events={eventsData}
+          heading="RECENT EVENTS"
+        />
       </Container>
     </section>
   );
