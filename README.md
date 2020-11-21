@@ -4,7 +4,7 @@
 
 ### View on web
 
-https://e-studentunioncommunity.web.app
+https://e-studentunioncommunity.netlify.app/
 
 # Project Topic:
 
